@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.csmsolucoesedesenvolvimento.school.management.entities.User;
-import com.csmsolucoesedesenvolvimento.school.services.UserService;
+import com.csmsolucoesedesenvolvimento.school.management.services.UserService;
 
 @RestController
 @RequestMapping(value = "/users")
