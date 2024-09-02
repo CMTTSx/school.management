@@ -15,6 +15,7 @@ import com.csmsolucoesedesenvolvimento.school.management.repositories.UserReposi
 
 import jakarta.persistence.EntityNotFoundException;
 
+
 @Service
 public class UserService {
 
