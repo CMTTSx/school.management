@@ -1,4 +1,4 @@
-package com.csmsolucoesedesenvolvimento.school.repositories;
+package com.csmsolucoesedesenvolvimento.school.management.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
