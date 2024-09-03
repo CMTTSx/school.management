@@ -34,3 +34,6 @@ build/
 
 # Ignorar arquivos :Zone.Identifier
 **/*.Identifier
+
+#Ignorar application.properties
+application-dev.properties
