@@ -37,3 +37,6 @@ build/
 
 #Ignorar application.properties
 application-dev.properties
+
+#Ignorar pasta API
+API
