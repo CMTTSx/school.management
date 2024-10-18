@@ -2,10 +2,14 @@ package com.csmsolucoesedesenvolvimento.school.management.entities;
 
 import java.io.Serializable;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,26 +21,40 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String email;
-    private String phone;
-    private String password;
-    private String role;
 
+    @Column(name= "firstName", nullable= false)
+    private String firstName;
+
+    @Column(name= "lastName", nullable= false)
+    private String lastName;
+
+    @Column(name= "email", nullable= false, unique= true)
+    private String email;
+
+    @Column(name= "phone", nullable= false)
+    private String phone;
+
+    @Column(name= "password", nullable= false)
+    private String password;
 
     public User() {
     }
 
-    public User(Long id, String name, String email, String phone, String password, String role) {
-        super();
+    //Relacionamento ONE-to-ONE User - Course
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "course_id", referencedColumnName = "id")
+    private Course course;
+
+
+    public User(Long id, String firstName, String lastName, String email, String phone, String password) {
         this.id = id;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.password = password;
-        this.role = role;
     }
-
+    
     public Long getId() {
         return id;
     }
@@ -45,12 +63,20 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -77,13 +103,14 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setCourse(Course course) {
+        this.course = course;
     }
+
 
     @Override
     public int hashCode() {

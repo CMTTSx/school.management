@@ -15,30 +15,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.csmsolucoesedesenvolvimento.school.management.entities.Discipline;
-import com.csmsolucoesedesenvolvimento.school.management.services.DisciplineService;
+import com.csmsolucoesedesenvolvimento.school.management.entities.Course;
+import com.csmsolucoesedesenvolvimento.school.management.services.CourseService;
 
 @RestController
-@RequestMapping(value = "/disciplines")
-public class DisciplineResource {
+@RequestMapping(value = "/courses")
+public class CourseResource {
 
     @Autowired
-    private DisciplineService service;
+    private CourseService service;
 
     @GetMapping
-    public ResponseEntity<List<Discipline>> findAll() {
-        List<Discipline> list = service.findAll();
+    public ResponseEntity<List<Course>> findAll() {
+        List<Course> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Discipline> findById(@PathVariable Long id) {
-        Discipline obj = service.findById(id);
+    public ResponseEntity<Course> findById(@PathVariable Long id) {
+        Course obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 
     @PostMapping
-    public ResponseEntity<Discipline> insert(@RequestBody Discipline obj) {
+    public ResponseEntity<Course> insert(@RequestBody Course obj) {
         obj = service.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(obj.getId()).toUri();
@@ -52,7 +52,7 @@ public class DisciplineResource {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Discipline> update(@PathVariable Long id, @RequestBody Discipline obj) {
+    public ResponseEntity<Course> update(@PathVariable Long id, @RequestBody Course obj) {
         obj = service.update(id, obj);
         return ResponseEntity.ok().body(obj);
     }

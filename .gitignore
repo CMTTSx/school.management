@@ -40,3 +40,6 @@ application-dev.properties
 
 #Ignorar pasta API
 API
+
+#Ignorar pasta ConfigTest
+config
