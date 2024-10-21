@@ -3,8 +3,10 @@ package com.csmsolucoesedesenvolvimento.school.management.entities;
 import java.io.Serializable;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,15 +22,15 @@ public class Course implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    @Column(name= "name", nullable= false)
+
+    @Column(name = "name", nullable = false)
     private String name;
     private String description;
 
     public Course() {
     }
-    //Relacionamento ONE-TO-MANY
-    @OneToMany(mappedBy="course")
+    //Relacionamento ONE-TO-MANY | Course - Discipline
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Discipline> disciplines;
 
     public Course(Long id, String name, String description) {
@@ -100,5 +102,4 @@ public class Course implements Serializable {
         return true;
     }
 
-    
 }

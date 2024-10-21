@@ -30,11 +30,11 @@ public class Discipline implements Serializable {
     public Discipline() {
     }
 
-    //Relacionamento MANY-TO-ONE
+    //Relacionamento MANY-TO-ONE | Discipline - Course
     //Evitar LOOP serialize JSON
     @JsonBackReference
     @ManyToOne
-    @JoinColumn(name="course_id", nullable=true)
+    @JoinColumn(name = "course_id", nullable = true)
     private Course course;
 
     public Discipline(Long id, String name, String description) {

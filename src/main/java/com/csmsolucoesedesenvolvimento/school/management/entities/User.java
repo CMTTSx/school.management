@@ -22,25 +22,25 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name= "firstName", nullable= false)
+    @Column(name= "firstName", nullable= false, length= 50)
     private String firstName;
 
-    @Column(name= "lastName", nullable= false)
+    @Column(name= "lastName", nullable= false, length= 100)
     private String lastName;
 
-    @Column(name= "email", nullable= false, unique= true)
+    @Column(name= "email", unique = true, nullable= false, length= 50)
     private String email;
 
-    @Column(name= "phone", nullable= false)
+    @Column(name= "phone", nullable= false, length= 15)
     private String phone;
 
-    @Column(name= "password", nullable= false)
+    @Column(name= "password", nullable= false, length= 100)
     private String password;
 
     public User() {
     }
 
-    //Relacionamento ONE-to-ONE User - Course
+    //Relacionamento ONE-to-ONE | User - Course
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "course_id", referencedColumnName = "id")
     private Course course;
@@ -110,7 +110,6 @@ public class User implements Serializable {
     public void setCourse(Course course) {
         this.course = course;
     }
-
 
     @Override
     public int hashCode() {
